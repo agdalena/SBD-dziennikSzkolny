@@ -1,0 +1,43 @@
+﻿@model MVC_DziennikSzkolny.Models.Przedmiot
+
+@{
+    ViewBag.Title = "Details";
+}
+@{
+    Layout = "~/Views/Admin/_LayoutPanel.cshtml";
+}
+
+
+
+
+<h2>@Html.DisplayFor(model => model.nazwa)</h2>
+<div>
+    Nauczyciele prowadzący:
+    <table class="table table-hover">
+        @foreach (var item in Model.nauczyciele)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nauczyciel.Nazwisko)
+                </td>
+
+
+                <td>
+                    @Html.ActionLink("Details", "Details", "Nauczyciels", new { id = item.nauczycielID }, null) |
+
+                </td>
+            </tr>
+
+        }
+    </table>
+    @Html.ActionLink("Dodaj nauczyciela", "AddNauczyciel", "ListaNauczycieliPrzedmiotus", new { id = Model.przedmiotID }, null)
+
+</div>
+
+   
+
+<script>
+    $(document).ready(function () {
+        $("#AdminPrzedmioty").addClass("active");
+    });
+</script>

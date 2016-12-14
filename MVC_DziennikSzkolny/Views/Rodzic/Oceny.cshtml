@@ -1,0 +1,46 @@
+﻿@model MVC_DziennikSzkolny.Models.Rodzic
+
+@{
+    ViewBag.Title = "Oceny";
+}
+@{
+    Layout = "~/Views/Rodzic/_LayoutPanel.cshtml";
+}
+
+@foreach (var dziecko in Model.uczens)
+{
+    <h4> @dziecko.Imie</h4>
+    <div class="panel panel-default">
+        @foreach (var p in dziecko.klasa.przedmioty)
+        {
+            <div class="panel-heading">
+                <h3 class="panel-title">@p.nauczycielPrzedmiot.przedmiot.nazwa</h3>
+            </div>
+            <div class="panel-body">
+                @foreach (var o in dziecko.oceny.Where(oc => oc.przedmiotID == p.nauczycielPrzedmiot.przedmiotID))
+                {
+                   
+                        string s ="Data wystawienia:"+o.data_wystawienia.ToShortDateString()+ " Nauczyciel:" + o.nauczyciel.Nazwisko + " Opis:" + o.opis;
+                   
+                        <button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="bottom" 
+                            data-content="@s">
+                        @o.wartosc
+                       
+                    </button>
+                }
+               
+            </div>
+        }
+    </div>
+     
+ 
+    
+}
+
+<script>
+    $(document).ready(function () {
+        $("#RodzicOceny").addClass("active");
+        $('[data-toggle="popover"]').popover()
+    });
+   
+</script>

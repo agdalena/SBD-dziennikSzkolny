@@ -1,0 +1,91 @@
+﻿@model MVC_DziennikSzkolny.Models.Nauczyciel
+
+@{
+    ViewBag.Title = "Details";
+}
+@{
+    Layout = "~/Views/Admin/_LayoutPanel.cshtml";
+}
+<h2>Szczegóły</h2>
+
+<div>
+    <h4>Nauczyciel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Imie)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Imie)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nazwisko)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nazwisko)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pesel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pesel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nr_telefonu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nr_telefonu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.email)
+        </dd>
+
+      
+
+    </dl>
+</div>
+<div>
+    Lista przedmiotów:
+    <table class="table table-hover">
+        @foreach (var item in Model.przedmioty)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.przedmiot.nazwa)
+                </td>
+
+
+                <td>
+                    @Html.ActionLink("Szczegóły", "Details", "Przedmiots", new { id = item.przedmiotID }, null) |
+                    @Html.ActionLink("Usuń", "Delete", "ListaNauczycieliPrzedmiotus", new { id = item.ID }, null) |
+       
+                </td>
+            </tr>
+
+        }
+    </table>
+    @Html.ActionLink("Dodaj przedmiot", "AddPrzedmiot", "ListaNauczycieliPrzedmiotus", new { id = Model.nauczycielID}, null)
+
+</div>
+<p>  @Html.ActionLink("Edytuj", "Edit", new { id = Model.nauczycielID }) |
+  
+    @Html.ActionLink("Wróć do listy", "Index")
+</p>
+
+<script>
+    $(document).ready(function () {
+        $("#AdminNauczyciele").addClass("active");
+    });
+</script>

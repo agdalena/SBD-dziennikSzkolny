@@ -1,0 +1,96 @@
+﻿@model MVC_DziennikSzkolny.Models.Uczen
+
+@{
+    ViewBag.Title = "Details";
+}
+@{
+    Layout = "~/Views/Admin/_LayoutPanel.cshtml";
+}
+<h2>Uczeń</h2>
+
+<div>
+   
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Imie)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Imie)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nazwisko)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nazwisko)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pesel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pesel)
+        </dd>
+
+        <dt>
+            Numer telefonu
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nr_telefonu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.email)
+        </dd>
+        <dt>
+            Data urodzenia
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Data_urodzenia)
+        </dd>
+        <dt>
+            Klasa
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.klasa.rok_rozpoczecia_toku_ksztalcenia)
+            @Html.DisplayFor(model => model.klasa.symbol)
+        </dd>
+
+        <dt>
+            Rodzic
+        </dt>
+
+        <dd>
+
+            @Html.DisplayFor(model => model.rodzic.Imie)
+            @Html.DisplayFor(model => model.rodzic.Nazwisko)
+            @Html.ActionLink("Profil rodzica", "Details","Rodzics", new { id = Model.rodzic.rodzicID },null) 
+        </dd>
+
+
+      
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edytuj", "Edit", new { id = Model.uczenID }) |
+    @Html.ActionLink("Wróć do listy", "Index")
+</p>
+
+<script>
+    $(document).ready(function () {
+        $("#AdminUczniowie").addClass("active");
+    });
+</script>

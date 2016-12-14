@@ -1,0 +1,86 @@
+﻿@model IEnumerable<MVC_DziennikSzkolny.Models.Uczen>
+
+@{
+    ViewBag.Title = "ProfilUcznia";
+}
+@{
+    Layout = "~/Views/Rodzic/_LayoutPanel.cshtml";
+}
+
+
+
+@foreach (var item in Model)
+{
+    <div>
+        <h4>Uczeń:</h4>
+        <hr />
+        <dl class="dl-horizontal">
+           
+            <dt>
+                @Html.DisplayNameFor(model => model.Imie)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(modelItem => item.Imie)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Nazwisko)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(modelItem => item.Nazwisko)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Pesel)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(modelItem => item.Pesel)
+            </dd>
+
+            <dt>
+               Data urodzenia
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(modelItem => item.Data_urodzenia)
+            </dd>
+            <dt>
+                Numer telefonu
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(modelItem => item.Nr_telefonu)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.email)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(modelItem => item.email)
+            </dd>
+
+            <dt>
+                Klasa
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(modelItem => item.klasa.symbol)
+            </dd>
+
+
+
+
+
+        </dl>
+        </div>
+            }
+  
+<script>
+    $(document).ready(function () {
+        $("#RodzicProfilUcznia").addClass("active");
+    });
+</script>    

@@ -1,0 +1,119 @@
+﻿@model MVC_DziennikSzkolny.Models.Uczen
+
+@{
+    ViewBag.Title = "DetailsUczen";
+    Layout = "~/Views/Nauczyciel/_LayoutPanel.cshtml";
+}
+
+<h2>Informacje o uczniu</h2>
+
+<div>
+    <h4>Uczen</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Imie)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Imie)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nazwisko)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nazwisko)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pesel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pesel)
+        </dd>
+
+        <dt>
+            Numer telefonu
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nr_telefonu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.email)
+        </dd>
+        <dt>
+            Data urodzenia
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Data_urodzenia)
+        </dd>
+        <dt>
+            Klasa
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.klasa.rok_rozpoczecia_toku_ksztalcenia)
+            @Html.DisplayFor(model => model.klasa.symbol)
+        </dd>
+
+        <dt>
+            Rodzic
+        </dt>
+
+        <dd>
+
+            @Html.DisplayFor(model => model.rodzic.Imie)
+            @Html.DisplayFor(model => model.rodzic.Nazwisko)
+        </dd>
+
+
+    </dl>
+</div>
+
+Oceny
+
+<div class="panel panel-default">
+    @foreach (var p in Model.klasa.przedmioty)
+    {
+
+        <div class="panel-heading">
+            <h3 class="panel-title">@p.nauczycielPrzedmiot.przedmiot.nazwa</h3>
+        </div>
+        <div class="panel-body">
+            @foreach (var o in Model.oceny.Where(oc => oc.przedmiotID == p.nauczycielPrzedmiot.przedmiotID))
+            {
+
+                string s = "Data: " + o.data_wystawienia + " Nauczyciel:" + o.nauczyciel.Nazwisko + " " + o.nauczyciel.Imie + " Opis:" + o.opis;
+
+                <button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="bottom"
+                        data-content="@s">
+                    @o.wartosc
+
+                </button>
+            }
+
+        </div>
+    }
+</div>
+
+<p>
+ 
+    @Html.ActionLink("Wróć do listy", "Uczniowie")
+</p>
+<script>
+        $(document).ready(function () {
+            $("#menuUczniowie").addClass("active");
+            $('[data-toggle="popover"]').popover()
+        });
+</script>

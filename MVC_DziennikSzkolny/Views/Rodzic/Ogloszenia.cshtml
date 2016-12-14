@@ -1,0 +1,44 @@
+﻿@model IEnumerable<MVC_DziennikSzkolny.Models.Uczen>
+@{
+    ViewBag.Title = "Ogloszenia";
+}
+@{
+    Layout = "~/Views/Rodzic/_LayoutPanel.cshtml";
+}
+Ogłoszenia wychowacy:
+<h2>Ogloszenia</h2>
+
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+    @foreach (var u in Model)
+    {
+        foreach (var o in u.klasa.ogloszenia)
+        { 
+        <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="heading" @o.ogloszenieID>
+                <h3 class="panel-title">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" href=#@o.ogloszenieID aria-expanded="true" aria-controls=@o.ogloszenieID>
+                        <i> @o.data_wystawienia </i><b>@o.temat</b>  
+
+                    </a>
+                </h3>
+            </div>
+            <div id=@o.ogloszenieID class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading" @o.ogloszenieID>
+                <div class="panel-body">
+                    <h4>
+                        @o.tresc
+                    </h4>
+                    <h6>
+                        nauczyciel: @o.nauczyciel.Nazwisko @o.nauczyciel.Imie
+                    </h6>
+                </div>
+            </div>
+        </div>
+        }
+    }
+</div>
+
+<script>
+    $(document).ready(function () {
+        $("#RodzicOgloszenia").addClass("active");
+    });
+</script>

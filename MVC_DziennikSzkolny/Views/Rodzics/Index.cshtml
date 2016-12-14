@@ -1,0 +1,52 @@
+﻿@model IEnumerable<MVC_DziennikSzkolny.Models.Rodzic>
+
+@{
+    ViewBag.Title = "Index";
+}
+@{
+    Layout = "~/Views/Admin/_LayoutPanel.cshtml";
+}
+<h2>Lista rodziców</h2>
+
+<p>
+    @Html.ActionLink("Dodaj nowego rodzica", "Create")
+</p>
+<table class="table table-hover">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Imie)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nazwisko)
+        </th>
+       
+      
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Imie)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nazwisko)
+        </td>
+      
+        
+        <td>
+            @Html.ActionLink("Edytuj", "Edit", new { id=item.rodzicID }) |
+            @Html.ActionLink("Szczegóły", "Details", new { id=item.rodzicID }) |
+            @Html.ActionLink("Usuń", "Delete", new { id=item.rodzicID })
+        </td>
+    </tr>
+}
+
+</table>
+
+
+<script>
+    $(document).ready(function () {
+        $("#AdminRodzice").addClass("active");
+    });
+</script>

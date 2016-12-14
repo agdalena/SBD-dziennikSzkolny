@@ -1,0 +1,42 @@
+﻿@model MVC_DziennikSzkolny.Models.ListaNauczycieliPrzedmiotu
+
+@{
+    ViewBag.Title = "Delete";
+}
+@{
+    Layout = "~/Views/Admin/_LayoutPanel.cshtml";
+}
+<h2>Usuwanie</h2>
+
+<h3>Czy jesteś pewien że chcesz usunąć przedzielenie tego przedmiotu nauczycielowi?</h3>
+<div>
+    
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nauczyciel.Imie)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nauczyciel.Imie)
+            @Html.DisplayFor(model => model.nauczyciel.Nazwisko)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.przedmiot.nazwa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.przedmiot.nazwa)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index", "Nauczyciels")
+        </div>
+    }
+</div>

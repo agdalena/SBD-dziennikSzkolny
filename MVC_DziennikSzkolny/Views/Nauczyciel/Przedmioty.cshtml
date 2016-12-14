@@ -1,0 +1,31 @@
+﻿@model IEnumerable<MVC_DziennikSzkolny.Models.ListaNauczycieliPrzedmiotu>
+
+@{
+    ViewBag.Title = "Przedmioty";
+}
+@{
+    Layout = "~/Views/Nauczyciel/_LayoutPanel.cshtml";
+}
+<h2>Przedmioty</h2>
+
+
+<table class="table">
+   
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.ActionLink(item.przedmiot.nazwa, "DetailsPrzedmiot", new { id = item.przedmiot.przedmiotID })
+
+            </td>
+
+        </tr>
+    }
+
+</table>
+<script>
+    $(document).ready(function () {
+        $("#menuPrzedmioty").addClass("active");
+    });
+</script>

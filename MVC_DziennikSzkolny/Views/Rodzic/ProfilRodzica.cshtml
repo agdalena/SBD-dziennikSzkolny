@@ -1,0 +1,61 @@
+﻿@model MVC_DziennikSzkolny.Models.Rodzic
+
+@{
+    ViewBag.Title = "ProfilRodzica";
+}
+@{
+    Layout = "~/Views/Rodzic/_LayoutPanel.cshtml";
+}
+
+<div>
+    <h4>Rodzic</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Imie)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Imie)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nazwisko)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nazwisko)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pesel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pesel)
+        </dd>
+
+        <dt>
+           Numer telefonu
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nr_telefonu)
+        </dd>
+
+        <dt>
+            E-mail
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.email)
+        </dd>
+    </dl>
+</div>
+
+
+<script>
+    $(document).ready(function () {
+        $("#RodzicProfil").addClass("active");
+    });
+</script>

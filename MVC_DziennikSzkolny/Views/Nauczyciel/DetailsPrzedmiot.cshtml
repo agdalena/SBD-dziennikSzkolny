@@ -1,0 +1,22 @@
+﻿@model MVC_DziennikSzkolny.Models.Przedmiot
+
+@{
+    ViewBag.Title = "DetailsPrzedmiot";
+    Layout = "~/Views/Nauczyciel/_LayoutPanel.cshtml";
+}
+
+<h2>@Html.DisplayFor(model => model.nazwa)</h2>
+<div>Nauczyciele prowadzący:
+    @foreach (var n in Model.nauczyciele)
+    {
+        <ul>
+            @Html.DisplayFor(modelN => n.nauczyciel.Nazwisko)
+            @Html.DisplayFor(modelN => n.nauczyciel.Imie)
+</ul>
+    }
+    </div>
+<div>
+    @Html.ActionLink("Wróć do listy przedmiotów", "Przedmioty")
+</div>
+
+ 

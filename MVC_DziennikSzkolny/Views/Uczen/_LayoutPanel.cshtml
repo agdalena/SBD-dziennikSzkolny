@@ -1,0 +1,20 @@
+﻿
+
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<h2>Panel ucznia</h2>
+<ul class="nav nav-tabs">
+    <li role="presentation" id="UczenPanel">@Html.ActionLink("Panel", "Panel", "Uczen")</li>
+    <li role="presentation" id="UczenProfil">@Html.ActionLink("Profil", "Profil", "Uczen")</li>
+    <li role="presentation" id="UczenOceny">@Html.ActionLink("Oceny", "Oceny", "Uczen")</li>
+    <li role="presentation" id="UczenPrzedmioty">@Html.ActionLink("Przedmioty", "Przedmioty", "Uczen")</li>
+</ul>
+<div class="jumbotron">
+  
+    @RenderBody()
+</div>
